@@ -1,12 +1,17 @@
 package com.improve10x.recyclerviewpractice.whatsapp.templates;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.whatsapp.messages.MessageActivity;
 import com.improve10x.recyclerviewpractice.whatsapp.templates.Template;
 import com.improve10x.recyclerviewpractice.whatsapp.templates.TemplateAdapter;
 
@@ -23,6 +28,23 @@ public class TemplatesActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Templates");
         setupData();
         setupRecyclerView();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.templates_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.template_add) {
+            Intent addIntent = new Intent(this, MessageActivity.class);
+            startActivity(addIntent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     private void setupRecyclerView() {
