@@ -39,6 +39,12 @@ public class MessageActivity extends AppCompatActivity {
         fetchData();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchData();
+    }
+
     private void initViews() {
         messageAdapter = new MessageAdapter();
         messagesRv = findViewById(R.id.messages_rv);
@@ -71,7 +77,7 @@ public class MessageActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.add){
-            Intent addIntent = new Intent(this, TemplatesActivity.class);
+            Intent addIntent = new Intent(this, AddEditMessageActivity.class);
             startActivity(addIntent);
             return true;
         } else {

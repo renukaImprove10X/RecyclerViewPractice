@@ -11,4 +11,8 @@ public class Template {
         this.templateId = templateId;
         this.messageText = messageText;
     }
+
+    public Template(String messageText) {
+        this.messageText = messageText;
+    }
 }

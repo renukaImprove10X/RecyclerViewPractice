@@ -9,26 +9,64 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.whatsapp.ChatWithApi;
 import com.improve10x.recyclerviewpractice.whatsapp.messages.MessageActivity;
 import com.improve10x.recyclerviewpractice.whatsapp.templates.Template;
 import com.improve10x.recyclerviewpractice.whatsapp.templates.TemplateAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TemplatesActivity extends AppCompatActivity {
 
-    public ArrayList<Template> templates;
+    public ArrayList<Template> templates = new ArrayList<Template>();
+    RecyclerView templatesRv;
+    TemplateAdapter templateAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_templates);
         getSupportActionBar().setTitle("Templates");
-
+        initViews();
         setupData();
         setupRecyclerView();
+        fetchData();
+    }
+
+    private void fetchData() {
+        ChatWithApi api = new ChatWithApi();
+        Call<List<Template>> call = api.createChatWithService().fetchTemplates();
+        call.enqueue(new Callback<List<Template>>() {
+            @Override
+            public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
+                templateAdapter.setData(response.body());
+                Toast.makeText(TemplatesActivity.this, "Fetched templates", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<List<Template>> call, Throwable t) {
+                Toast.makeText(TemplatesActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void initViews() {
+        templatesRv = findViewById(R.id.templates_rv);
+        templateAdapter = new TemplateAdapter();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchData();
     }
 
     @Override
@@ -40,7 +78,7 @@ public class TemplatesActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.template_add) {
-            Intent addIntent = new Intent(this, MessageActivity.class);
+            Intent addIntent = new Intent(this, AddEditTemplateActivity.class);
             startActivity(addIntent);
             return true;
         } else {
@@ -49,15 +87,14 @@ public class TemplatesActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
-        RecyclerView templatesRv = findViewById(R.id.templates_rv);
+        templatesRv = findViewById(R.id.templates_rv);
         templatesRv.setLayoutManager(new LinearLayoutManager(this));
-        TemplateAdapter templateAdapter = new TemplateAdapter();
+        templateAdapter = new TemplateAdapter();
         templateAdapter.setData(templates);
         templatesRv.setAdapter(templateAdapter);
     }
 
     private void setupData() {
-        templates = new ArrayList<Template>();
         Template template1 = new Template();
         template1.templateId = "1";
         template1.messageText = "Hi,\nWelcome to Improve 10X.";

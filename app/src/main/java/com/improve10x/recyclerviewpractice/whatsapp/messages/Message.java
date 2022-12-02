@@ -15,4 +15,10 @@ public class Message {
         this.phoneNumber = phoneNumber;
         this.messageText = messageText;
     }
+
+    public Message(String name, String phoneNumber, String messageText) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.messageText = messageText;
+    }
 }

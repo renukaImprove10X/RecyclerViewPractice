@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_add_edit_message.xml" value="0.2682291666666667" />
+        <entry key="app/src/main/res/layout/activity_add_edit_template.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_categories.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_message.xml" value="0.28229166666666666" />
@@ -13,9 +15,11 @@
         <entry key="app/src/main/res/layout/movie_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/series_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/template_item.xml" value="0.2682291666666667" />
+        <entry key="app/src/main/res/menu/add_message_menu.xml" value="0.28125" />
         <entry key="app/src/main/res/menu/messages_menu.xml" value="0.335" />
         <entry key="app/src/main/res/menu/movies_menu.xml" value="0.28125" />
         <entry key="app/src/main/res/menu/series_menu.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/menu/template_add_menu.xml" value="0.28125" />
         <entry key="app/src/main/res/menu/templates_menu.xml" value="0.28125" />
       </map>
     </option>

@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.improve10x.recyclerviewpractice.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TemplateAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
-    public ArrayList<Template> templates;
+    public List<Template> templates;
 
     @NonNull
     @Override
@@ -33,7 +34,8 @@ public class TemplateAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
         return templates.size();
     }
 
-    public void setData(ArrayList<Template> templates) {
+    public void setData(List<Template> templates) {
         this.templates = templates;
+        notifyDataSetChanged();
     }
 }
