@@ -26,6 +26,7 @@ public class TemplatesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_templates);
         getSupportActionBar().setTitle("Templates");
+
         setupData();
         setupRecyclerView();
     }

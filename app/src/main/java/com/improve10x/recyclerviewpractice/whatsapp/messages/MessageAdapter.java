@@ -12,9 +12,10 @@ import com.improve10x.recyclerviewpractice.whatsapp.templates.Template;
 import com.improve10x.recyclerviewpractice.whatsapp.templates.TemplateViewHolder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
-    public ArrayList<Message> messages;
+    public List<Message> messages;
 
     @NonNull
     @Override
@@ -37,7 +38,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
         return messages.size();
     }
 
-    public void setData(ArrayList<Message> messages) {
+    public void setData(List<Message> messages) {
         this.messages = messages;
         notifyDataSetChanged();
     }
