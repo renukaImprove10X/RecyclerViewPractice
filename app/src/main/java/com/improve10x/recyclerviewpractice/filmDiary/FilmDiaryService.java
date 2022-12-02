@@ -11,7 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface FilmDiaryService {
-    @GET("series")
+    @GET("renukaSeries")
     Call<List<Series>> fetchSeries();
 
     @POST("renukaSeries")

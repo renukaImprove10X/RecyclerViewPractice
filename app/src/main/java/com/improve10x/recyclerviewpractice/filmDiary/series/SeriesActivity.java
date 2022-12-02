@@ -63,7 +63,7 @@ public class SeriesActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.series_add) {
-            Intent intent = new Intent(this, MoviesActivity.class);
+            Intent intent = new Intent(this, AddEditSeriesActivity.class);
             startActivity(intent);
             return true;
         } else {
