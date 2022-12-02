@@ -1,8 +1,12 @@
 package com.improve10x.recyclerviewpractice.filmDiary.movies;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.improve10x.recyclerviewpractice.R;
 import com.improve10x.recyclerviewpractice.filmDiary.FilmDiaryApi;
 import com.improve10x.recyclerviewpractice.filmDiary.FilmDiaryService;
+import com.improve10x.recyclerviewpractice.filmDiary.series.SeriesActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +34,23 @@ public class MoviesActivity extends AppCompatActivity {
         setupData();
         setupRecyclerView();
         fetchData();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.movies_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.movies_add){
+            Intent intent = new Intent(this, SeriesActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     private void fetchData() {

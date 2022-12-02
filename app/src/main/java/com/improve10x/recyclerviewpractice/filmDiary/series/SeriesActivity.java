@@ -1,7 +1,11 @@
 package com.improve10x.recyclerviewpractice.filmDiary.series;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.improve10x.recyclerviewpractice.R;
 import com.improve10x.recyclerviewpractice.filmDiary.FilmDiaryApi;
 import com.improve10x.recyclerviewpractice.filmDiary.FilmDiaryService;
+import com.improve10x.recyclerviewpractice.filmDiary.movies.MoviesActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +25,7 @@ import retrofit2.Response;
 public class SeriesActivity extends AppCompatActivity {
     public List<Series> series;
     SeriesAdapter seriesAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +34,23 @@ public class SeriesActivity extends AppCompatActivity {
         setupData();
         setupRecyclerView();
         fetchData();
+    }
+
+    @Override
+    public boolean onCreatePanelMenu(int featureId, @NonNull Menu menu) {
+        getMenuInflater().inflate(R.menu.series_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.series_add) {
+            Intent intent = new Intent(this, MoviesActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     private void fetchData() {
@@ -58,7 +81,7 @@ public class SeriesActivity extends AppCompatActivity {
 
     private void setupData() {
         series = new ArrayList<>();
-        Series series = new Series("1", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxFQlfyjuPDaN29rN-bcBwQgJlbv0q5CjqNQ&usqp=CAU","Comedy Movies");
+        Series series = new Series("1", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxFQlfyjuPDaN29rN-bcBwQgJlbv0q5CjqNQ&usqp=CAU", "Comedy Movies");
         this.series.add(series);
         Series series2 = new Series("2", "https://wallpaperaccess.com/full/1280586.jpg", "Horror Movies");
         this.series.add(series2);
