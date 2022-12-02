@@ -24,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessageActivity extends AppCompatActivity {
-    public ArrayList<Message> messages;
+    public ArrayList<Message> messages = new ArrayList<>();;
     MessageAdapter messageAdapter;
     RecyclerView messagesRv;
 
@@ -34,7 +34,6 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message);
         getSupportActionBar().setTitle("Messages");
         initViews();
-        setupData();
         setupRecyclerView();
         fetchData();
     }
@@ -90,20 +89,6 @@ public class MessageActivity extends AppCompatActivity {
 
         messageAdapter.setData(messages);
         messagesRv.setAdapter(messageAdapter);
-    }
-
-    private void setupData() {
-        messages = new ArrayList<>();
-        Message message = new Message("1", "Aravind", "+91 9000540052", "Hi, Welcome to Improve 10X");
-        messages.add(message);
-        Message message2 = new Message("2", "Ramesh", "+91 9000540052", "Hi, Welcome to Improve 10X");
-        messages.add(message2);
-        Message message3 = new Message("3", "", "+91 9000540052", "Hi, call me when you see the message");
-        messages.add(message3);
-        Message message4 = new Message("4", "Swiggy Delivery", "+91 9000540052", "full address");
-        messages.add(message4);
-        Message message5 = new Message("5", "Renuka Venkata Ramani", "+91 9000540052", "Are you available for this Sunday?\n\nWe can have a call and discuss the movie");
-        messages.add(message5);
     }
 
 }

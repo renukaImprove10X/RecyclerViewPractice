@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.improve10x.recyclerviewpractice.R;
@@ -29,6 +31,7 @@ public class TemplatesActivity extends AppCompatActivity {
     public ArrayList<Template> templates = new ArrayList<Template>();
     RecyclerView templatesRv;
     TemplateAdapter templateAdapter;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +39,13 @@ public class TemplatesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_templates);
         getSupportActionBar().setTitle("Templates");
         initViews();
-        setupData();
+        showProgress();
         setupRecyclerView();
         fetchData();
+    }
+
+    private void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     private void fetchData() {
@@ -47,18 +54,25 @@ public class TemplatesActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Template>>() {
             @Override
             public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
+                hideProgress();
                 templateAdapter.setData(response.body());
                 Toast.makeText(TemplatesActivity.this, "Fetched templates", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<List<Template>> call, Throwable t) {
+                hideProgress();
                 Toast.makeText(TemplatesActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    private void hideProgress() {
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+
     private void initViews() {
+        progressBar = findViewById(R.id.progress_bar);
         templatesRv = findViewById(R.id.templates_rv);
         templateAdapter = new TemplateAdapter();
     }
@@ -92,28 +106,5 @@ public class TemplatesActivity extends AppCompatActivity {
         templateAdapter = new TemplateAdapter();
         templateAdapter.setData(templates);
         templatesRv.setAdapter(templateAdapter);
-    }
-
-    private void setupData() {
-        Template template1 = new Template();
-        template1.templateId = "1";
-        template1.messageText = "Hi,\nWelcome to Improve 10X.";
-        templates.add(template1);
-        Template template2 = new Template();
-        template2.templateId = "2";
-        template2.messageText = "Hi, I'm busy.I'll call you later";
-        templates.add(template2);
-        Template template3 = new Template();
-        template3.templateId = "3";
-        template3.messageText = "Hi,\ncall me when you see the message";
-        templates.add(template3);
-        Template template4 = new Template();
-        template4.templateId = "4";
-        template4.messageText = "-Hi, Please find my contact details\nName: Viswanath Kumar Sandu\ncompany: Improve 10X\nMobile: +919000450052";
-        templates.add(template4);
-        Template template5 = new Template();
-        template5.templateId = "5";
-        template5.messageText = "Hi, Please find my contact details\nAccount Number: 68797675768957\nBank: ICICI Bank\nIFSC: ICICI0003456";
-        templates.add(template5);
     }
 }
