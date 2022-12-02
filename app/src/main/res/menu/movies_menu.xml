@@ -6,7 +6,8 @@
         android:id="@+id/app_bar_search"
         android:icon="@android:drawable/ic_menu_search"
         android:title="Search"
-        app:actionViewClass="android.widget.SearchView" />
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/movies_add"
         android:icon="@android:drawable/ic_input_add"

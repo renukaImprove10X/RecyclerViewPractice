@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,8 @@ import retrofit2.Response;
 public class SeriesActivity extends AppCompatActivity {
     public List<Series> series;
     SeriesAdapter seriesAdapter;
+    ProgressBar progressBar;
+    RecyclerView seriesRv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +36,22 @@ public class SeriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_series);
         getSupportActionBar().setTitle("Series");
         setupData();
+        setupViews();
         setupRecyclerView();
         fetchData();
+    }
+
+    private void showProgress(){
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgress(){
+        progressBar.setVisibility(View.GONE);
+    }
+
+    private void setupViews() {
+        progressBar = findViewById(R.id.series_progress_bar);
+        seriesRv = findViewById(R.id.series_rv);
     }
 
     @Override
@@ -54,25 +72,26 @@ public class SeriesActivity extends AppCompatActivity {
     }
 
     private void fetchData() {
+        showProgress();
         FilmDiaryApi api = new FilmDiaryApi();
         FilmDiaryService seriesService = api.createFilmDiaryService();
         Call<List<Series>> series = seriesService.fetchSeries();
         series.enqueue(new Callback<List<Series>>() {
             @Override
             public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
+                hideProgress();
                 List<Series> seriesList = response.body();
                 seriesAdapter.setData(seriesList);
             }
 
             @Override
             public void onFailure(Call<List<Series>> call, Throwable t) {
-
+                hideProgress();
             }
         });
     }
 
     private void setupRecyclerView() {
-        RecyclerView seriesRv = findViewById(R.id.series_rv);
         seriesRv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         seriesAdapter = new SeriesAdapter();
         seriesAdapter.setData(series);
