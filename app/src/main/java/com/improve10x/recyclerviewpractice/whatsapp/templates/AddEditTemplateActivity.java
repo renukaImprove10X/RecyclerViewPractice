@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.ActivityAddEditMessageBinding;
+import com.improve10x.recyclerviewpractice.databinding.ActivityAddEditTemplateBinding;
 import com.improve10x.recyclerviewpractice.whatsapp.ChatWithApi;
 
 import retrofit2.Call;
@@ -18,15 +21,18 @@ import retrofit2.Response;
 
 public class AddEditTemplateActivity extends AppCompatActivity {
     EditText messageTxt;
+    private ActivityAddEditTemplateBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_edit_template);
+        binding = ActivityAddEditTemplateBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         initViews();
     }
 
     private void initViews() {
-        messageTxt = findViewById(R.id.message_txt);
+        messageTxt = binding.messageTxt;
     }
 
     @Override

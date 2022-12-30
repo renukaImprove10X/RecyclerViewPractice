@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.ActivityMoviesBinding;
 import com.improve10x.recyclerviewpractice.filmDiary.FilmDiaryApi;
 import com.improve10x.recyclerviewpractice.filmDiary.FilmDiaryService;
 import com.improve10x.recyclerviewpractice.filmDiary.series.SeriesActivity;
@@ -26,10 +28,13 @@ import retrofit2.Response;
 public class MoviesActivity extends AppCompatActivity {
     public ArrayList<Movie> movies;
     public MoviesAdapter moviesAdapter;
+    private ActivityMoviesBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movies);
+        binding = ActivityMoviesBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         getSupportActionBar().setTitle("Movies");
         setupData();
         setupRecyclerView();
@@ -71,7 +76,7 @@ public class MoviesActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
-        RecyclerView messagesRv = findViewById(R.id.movies_rv);
+        RecyclerView messagesRv = binding.moviesRv;
         messagesRv.setLayoutManager(new GridLayoutManager(this, 2));
         moviesAdapter = new MoviesAdapter();
         moviesAdapter.setData(movies);

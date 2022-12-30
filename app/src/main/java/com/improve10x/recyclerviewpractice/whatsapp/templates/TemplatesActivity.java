@@ -106,7 +106,7 @@ public class TemplatesActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
-        templatesRv = findViewById(R.id.templates_rv);
+        templatesRv = binding.templatesRv;
         templatesRv.setLayoutManager(new LinearLayoutManager(this));
         templateAdapter = new TemplateAdapter();
         templateAdapter.setData(templates);

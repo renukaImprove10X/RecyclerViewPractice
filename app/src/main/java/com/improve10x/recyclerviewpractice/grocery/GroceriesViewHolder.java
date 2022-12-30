@@ -9,15 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.GroceryItemBinding;
 
 import org.w3c.dom.Text;
 
 public class GroceriesViewHolder extends RecyclerView.ViewHolder {
-    ImageView groceryImg;
-    TextView title;
-    public GroceriesViewHolder(@NonNull View itemView) {
-        super(itemView);
-        groceryImg = itemView.findViewById(R.id.grocery_img);
-        title = itemView.findViewById(R.id.title_txt);
+    protected GroceryItemBinding binding;
+    public GroceriesViewHolder(GroceryItemBinding binding) {
+        super(binding.getRoot());
+        this.binding = binding;
     }
 }

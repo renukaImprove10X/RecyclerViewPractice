@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.GroceryItemBinding;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -17,16 +18,16 @@ public class GroceriesAdapter extends RecyclerView.Adapter<GroceriesViewHolder> 
     @NonNull
     @Override
     public GroceriesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate( R.layout.grocery_item, parent,false);
-        GroceriesViewHolder groceriesViewHolder = new GroceriesViewHolder(view);
+        GroceryItemBinding binding = GroceryItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        GroceriesViewHolder groceriesViewHolder = new GroceriesViewHolder(binding);
         return groceriesViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull GroceriesViewHolder holder, int position) {
         Grocery grocery = groceries.get(position);
-        Picasso.get().load(grocery.imageUrl).into(holder.groceryImg);
-        holder.title.setText(grocery.name);
+        Picasso.get().load(grocery.imageUrl).into(holder.binding.groceryImg);
+        holder.binding.titleTxt.setText(grocery.name);
     }
 
     @Override

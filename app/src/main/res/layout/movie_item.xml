@@ -10,7 +10,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/grocery_img"
+        android:id="@+id/movie_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"

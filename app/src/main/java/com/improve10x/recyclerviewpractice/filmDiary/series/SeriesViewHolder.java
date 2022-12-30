@@ -8,14 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.SeriesItemBinding;
 
 public class SeriesViewHolder extends RecyclerView.ViewHolder {
-    public ImageView seriesImg;
-    public TextView titleTxt;
+    protected SeriesItemBinding binding;
 
-    public SeriesViewHolder(@NonNull View itemView) {
-        super(itemView);
-        titleTxt = itemView.findViewById(R.id.title_txt);
-        seriesImg = itemView.findViewById(R.id.grocery_img);
+    public SeriesViewHolder(SeriesItemBinding binding) {
+        super(binding.getRoot());
+        this.binding = binding;
     }
 }

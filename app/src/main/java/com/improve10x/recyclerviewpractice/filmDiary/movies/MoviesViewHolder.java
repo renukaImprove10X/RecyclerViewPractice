@@ -8,14 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.MovieItemBinding;
 
 public class MoviesViewHolder extends RecyclerView.ViewHolder {
-    public ImageView movieImg;
-    public TextView titleTxt;
+    protected MovieItemBinding binding;
 
-    public MoviesViewHolder(@NonNull View itemView) {
-        super(itemView);
-        titleTxt = itemView.findViewById(R.id.title_txt);
-        movieImg = itemView.findViewById(R.id.grocery_img);
+    public MoviesViewHolder(MovieItemBinding binding) {
+        super(binding.getRoot());
+        this.binding = binding;
     }
 }

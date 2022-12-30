@@ -5,24 +5,29 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.ActivityCategoriesBinding;
 
 import java.util.ArrayList;
 
 public class CategoriesActivity extends AppCompatActivity {
     ArrayList<Grocery> groceries;
+    private ActivityCategoriesBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categories);
+        binding = ActivityCategoriesBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         getSupportActionBar().setTitle("Dunzo");
         setupData();
         setupRecyclerView();
     }
 
     private void setupRecyclerView() {
-        RecyclerView groceriesRv = findViewById(R.id.groceries_rv);
+        RecyclerView groceriesRv = binding.groceriesRv;
         groceriesRv.setLayoutManager(new GridLayoutManager(this, 3));
         GroceriesAdapter groceriesAdapter = new GroceriesAdapter();
         groceriesAdapter.setData(groceries);

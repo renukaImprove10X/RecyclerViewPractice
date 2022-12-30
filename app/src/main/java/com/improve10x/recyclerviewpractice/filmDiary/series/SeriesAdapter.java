@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.SeriesItemBinding;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -19,16 +20,16 @@ public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
     @NonNull
     @Override
     public SeriesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.series_item, parent, false);
-        SeriesViewHolder seriesViewHolder = new SeriesViewHolder(view);
+        SeriesItemBinding binding = SeriesItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        SeriesViewHolder seriesViewHolder = new SeriesViewHolder(binding);
         return seriesViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull SeriesViewHolder holder, int position) {
         Series series = this.series.get(position);
-        holder.titleTxt.setText(series.title);
-        Picasso.get().load(series.imageUrl).into(holder.seriesImg);
+        holder.binding.titleTxt.setText(series.title);
+        Picasso.get().load(series.imageUrl).into(holder.binding.seriesImg);
     }
 
     @Override
