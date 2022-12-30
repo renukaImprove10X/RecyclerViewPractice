@@ -29,7 +29,7 @@ public class MoviesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_series);
+        setContentView(R.layout.activity_movies);
         getSupportActionBar().setTitle("Movies");
         setupData();
         setupRecyclerView();
@@ -45,7 +45,7 @@ public class MoviesActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.movies_add){
-            Intent intent = new Intent(this, SeriesActivity.class);
+            Intent intent = new Intent(this, AddEditMovieActivity.class);
             startActivity(intent);
             return true;
         } else {
@@ -71,7 +71,7 @@ public class MoviesActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
-        RecyclerView messagesRv = findViewById(R.id.series_rv);
+        RecyclerView messagesRv = findViewById(R.id.movies_rv);
         messagesRv.setLayoutManager(new GridLayoutManager(this, 2));
         moviesAdapter = new MoviesAdapter();
         moviesAdapter.setData(movies);

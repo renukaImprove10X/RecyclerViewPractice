@@ -7,11 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.TemplateItemBinding;
 
 public class TemplateViewHolder extends RecyclerView.ViewHolder {
-    public TextView templateTxt;
-    public TemplateViewHolder(@NonNull View itemView) {
-        super(itemView);
-        templateTxt = itemView.findViewById(R.id.template_txt);
+    public TemplateItemBinding binding;
+    public TemplateViewHolder(TemplateItemBinding binding) {
+        super(binding.getRoot());
+       this.binding = binding;
     }
 }

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.MessageItemBinding;
 import com.improve10x.recyclerviewpractice.whatsapp.templates.Template;
 import com.improve10x.recyclerviewpractice.whatsapp.templates.TemplateViewHolder;
 
@@ -20,17 +21,17 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
     @NonNull
     @Override
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item, parent, false);
-        MessageViewHolder messageViewHolder = new MessageViewHolder(view);
+        MessageItemBinding binding = MessageItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        MessageViewHolder messageViewHolder = new MessageViewHolder(binding);
         return messageViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
         Message message = messages.get(position);
-        holder.nameTxt.setText(message.name);
-        holder.phoneNumberTxt.setText(message.phoneNumber);
-        holder.messageTxt.setText(message.messageText);
+        holder.binding.nameTxt.setText(message.name);
+        holder.binding.phoneNumberTxt.setText(message.phoneNumber);
+        holder.binding.titleTxt.setText(message.messageText);
     }
 
     @Override

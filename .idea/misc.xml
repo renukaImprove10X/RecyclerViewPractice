@@ -4,18 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_add_edit_message.xml" value="0.2682291666666667" />
+        <entry key="app/src/main/res/layout/activity_add_edit_movie.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_add_edit_series.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/activity_add_edit_template.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_categories.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_message.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_movies.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_series.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_templates.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/grocery_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/message_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/movie_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/series_item.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/spinner_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/template_item.xml" value="0.2682291666666667" />
+        <entry key="app/src/main/res/menu/add_edit_movie_menu.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/menu/add_message_menu.xml" value="0.28125" />
         <entry key="app/src/main/res/menu/add_series_menu.xml" value="0.28125" />
         <entry key="app/src/main/res/menu/messages_menu.xml" value="0.335" />

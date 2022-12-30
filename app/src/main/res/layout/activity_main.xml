@@ -36,4 +36,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Groceries" />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login" />
+
+    <Button
+        android:id="@+id/logout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout" />
 </LinearLayout>

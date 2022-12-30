@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.ActivityAddEditSeriesBinding;
 import com.improve10x.recyclerviewpractice.filmDiary.FilmDiaryApi;
 
 import retrofit2.Call;
@@ -20,18 +22,21 @@ public class AddEditSeriesActivity extends AppCompatActivity {
     EditText seriesIdTxt;
     EditText seriesNameTxt;
     EditText seriesImgUrlTxt;
+    private ActivityAddEditSeriesBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_edit_series);
+        binding = ActivityAddEditSeriesBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         initViews();
     }
 
     private void initViews() {
-        seriesIdTxt = findViewById(R.id.series_id_txt);
-        seriesNameTxt = findViewById(R.id.series_name_txt);
-        seriesImgUrlTxt = findViewById(R.id.series_img_url_txt);
+        seriesIdTxt = binding.seriesIdTxt;
+        seriesNameTxt = binding.seriesNameTxt;
+        seriesImgUrlTxt = binding.seriesImgUrlTxt;
     }
 
     @Override

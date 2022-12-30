@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.ActivityAddEditMessageBinding;
 import com.improve10x.recyclerviewpractice.whatsapp.ChatWithApi;
 
 import retrofit2.Call;
@@ -21,18 +23,21 @@ public class AddEditMessageActivity extends AppCompatActivity {
     TextInputEditText nameTxt;
     TextInputEditText phoneNumberTxt;
     EditText messageTxt;
+    private ActivityAddEditMessageBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_edit_message);
+        binding = ActivityAddEditMessageBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         initViews();
     }
 
     private void initViews() {
-        nameTxt = findViewById(R.id.name_txt);
-        phoneNumberTxt = findViewById(R.id.phone_number_txt);
-        messageTxt = findViewById(R.id.message_txt);
+        nameTxt = binding.nameTxt;
+        phoneNumberTxt = binding.phoneNumberTxt;
+        messageTxt = binding.messageTxt;
     }
 
     @Override

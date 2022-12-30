@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.ActivityMainBinding;
+import com.improve10x.recyclerviewpractice.databinding.ActivityTemplatesBinding;
 import com.improve10x.recyclerviewpractice.whatsapp.ChatWithApi;
 import com.improve10x.recyclerviewpractice.whatsapp.messages.MessageActivity;
 import com.improve10x.recyclerviewpractice.whatsapp.templates.Template;
@@ -32,11 +34,14 @@ public class TemplatesActivity extends AppCompatActivity {
     RecyclerView templatesRv;
     TemplateAdapter templateAdapter;
     ProgressBar progressBar;
+    private ActivityTemplatesBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_templates);
+        binding = ActivityTemplatesBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         getSupportActionBar().setTitle("Templates");
         initViews();
         showProgress();
@@ -72,8 +77,8 @@ public class TemplatesActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        progressBar = findViewById(R.id.progress_bar);
-        templatesRv = findViewById(R.id.templates_rv);
+        progressBar = binding.progressBar;
+        templatesRv = binding.templatesRv;
         templateAdapter = new TemplateAdapter();
     }
 

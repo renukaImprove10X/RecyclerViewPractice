@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.ActivitySeriesBinding;
 import com.improve10x.recyclerviewpractice.filmDiary.FilmDiaryApi;
 import com.improve10x.recyclerviewpractice.filmDiary.FilmDiaryService;
-import com.improve10x.recyclerviewpractice.filmDiary.movies.MoviesActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +29,14 @@ public class SeriesActivity extends AppCompatActivity {
     SeriesAdapter seriesAdapter;
     ProgressBar progressBar;
     RecyclerView seriesRv;
+    private ActivitySeriesBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_series);
+        binding = ActivitySeriesBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         getSupportActionBar().setTitle("Series");
         setupData();
         setupViews();
@@ -50,8 +53,8 @@ public class SeriesActivity extends AppCompatActivity {
     }
 
     private void setupViews() {
-        progressBar = findViewById(R.id.series_progress_bar);
-        seriesRv = findViewById(R.id.series_rv);
+        progressBar = binding.seriesProgressBar;
+        seriesRv = binding.seriesRv;
     }
 
     @Override

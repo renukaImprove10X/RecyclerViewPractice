@@ -7,16 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.MessageItemBinding;
 
 public class MessageViewHolder extends RecyclerView.ViewHolder {
-    public TextView nameTxt;
-    public TextView phoneNumberTxt;
-    public TextView messageTxt;
+    MessageItemBinding binding;
 
-    public MessageViewHolder(@NonNull View itemView) {
-        super(itemView);
-        nameTxt = itemView.findViewById(R.id.name_txt);
-        phoneNumberTxt = itemView.findViewById(R.id.phone_number_txt);
-        messageTxt = itemView.findViewById(R.id.title_txt);
+    public MessageViewHolder(MessageItemBinding binding) {
+        super(binding.getRoot());
+        this.binding = binding;
     }
 }

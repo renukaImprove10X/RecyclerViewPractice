@@ -9,9 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.improve10x.recyclerviewpractice.R;
+import com.improve10x.recyclerviewpractice.databinding.ActivityMessageBinding;
 import com.improve10x.recyclerviewpractice.whatsapp.ChatWithApi;
 import com.improve10x.recyclerviewpractice.whatsapp.ChatWithService;
 import com.improve10x.recyclerviewpractice.whatsapp.templates.TemplatesActivity;
@@ -27,11 +29,14 @@ public class MessageActivity extends AppCompatActivity {
     public ArrayList<Message> messages = new ArrayList<>();;
     MessageAdapter messageAdapter;
     RecyclerView messagesRv;
+    private ActivityMessageBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        binding = ActivityMessageBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         getSupportActionBar().setTitle("Messages");
         initViews();
         setupRecyclerView();
@@ -46,7 +51,7 @@ public class MessageActivity extends AppCompatActivity {
 
     private void initViews() {
         messageAdapter = new MessageAdapter();
-        messagesRv = findViewById(R.id.messages_rv);
+        messagesRv = binding.messagesRv;
     }
 
     private void fetchData() {
